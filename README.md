@@ -55,14 +55,16 @@ export class Component {
 _Using Bootstrap classes_
 <!-- {% raw %} -->
 ``` html
-### using **#f="ngForm"**  and **(ngSubmit)="submit(f.value)"** to submit form data
+### using #f="ngForm"  and (ngSubmit)="submit(f.value)" to submit form data
 <form #f="ngForm" (ngSubmit)="submit(f.value)">
     <div class="form-group">
         <label for="course"> Course Name </label>
-        ### Using **ngModel** **name="course"** **#course="ngModel"** to get data and input changes
+      
+        ### Using ngModel name="course" #course="ngModel" to get data and input changes
         <input 
            required ngModel name="course" #course="ngModel" 
            id="course" type="text" class="form-control">
+      
         ### Showing errors using classes that Angular adds in HTML elements
         <div class="alert alert-danger" *ngIf="course.touched && course.invalid">
           <div *ngIf="course.errors.required">Course Name is required.</div>
@@ -75,6 +77,8 @@ _Using Bootstrap classes_
             required ngModel name="category" #category="ngModel" 
             id="category" class="form-control">
             <option value=""></option>
+          
+            ### Looping through categories and binding data to value attribute
             <option *ngFor="let category of categories" [value]="category.id"> 
                 {{ category.name }}
             </option>
@@ -90,9 +94,11 @@ _Using Bootstrap classes_
         <input ngModel name="checkbox" type="checkbox" id="checkbox">
         Agree to license terms?
     </div>
-
+    
+    ### Showing data to view in json format using json pipe
     <p> {{ f.value | json }}  </p>
 
+    ### Adds disabled attribute to button if form is invalid
     <button [disabled]="f.invalid" class="btn btn-primary">Create</button>
 
 </form>

@@ -18,7 +18,7 @@ export class Component {
 ``` html
 
 ## Showing component properties with interpolation
-<div> `{{ title }}` </div>
+<div> \{\{ title \}\} </div>
 
 ## Showing an array property with *ngFor
 <ul>

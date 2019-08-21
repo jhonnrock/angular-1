@@ -86,7 +86,7 @@ export class Course {
     name: string;
     rating: number;
     
-    constructor(name: string, rating: string) {
+    constructor(name: string, rating: number) {
         this.name = name;
         this.rating = rating;
     }
@@ -96,14 +96,15 @@ export class Course {
 ### Parent Component
 The code in parentComponent.ts file
 ``` javascript
+import {Course} from '../course.model';
+
 export class ParentComponent {
-  
-  addedCourses = Course[];
+  addedCourses: Course[];
 
   courses = [
-      new Course("Master Angular", 8),
-      new Course("Master Laravel", 7),
-      new Course("Master ReactJS", 6)
+    new Course('Master Angular', 8),
+    new Course('Master Laravel', 7),
+    new Course('Master ReactJS', 6)
   ];
 
   onBuyCourse(course: Course) {
@@ -116,12 +117,14 @@ export class ParentComponent {
 The code in the parent HTML file
 <!-- {% raw %} -->
 ```html
-<course
-    *ngFor="let course of courses" 
+<div class="row mt-5">
+  <course-item
+    *ngFor="let course of courses"
     [courseData]="course"
-    (boughtCourse)="onBuyCourse($event)"    
->
-</course>
+    (boughtCourse)="onBuyCourse($event)"
+    class="col-3">
+  </course-item>
+</div>
 ```
 <!-- {% endraw %} -->
 
@@ -143,17 +146,23 @@ export class ChildComponent {
 The code in the child HTML file
 <!-- {% raw %} -->
 ``` html
-<div> 
-  Course Name: {{ courseData.name }} 
+<div class="card">
+  <div class="card-body h3 text-center">
+    {{ courseData.name }}
+  </div>
+  <div class="card-footer">
+    <div class="row justify-content-between">
+      <button
+          class="btn btn-primary"
+          (click)="buyCourse(courseData)">
+        Buy
+      </button>
+      <span class="btn btn-warning">
+        {{ courseData.rating }} ★
+      </span>
+    </div>
+  </div>
 </div>
-<div> 
-  Course Rating: {{ courseData.rating }} ★ 
-</div>
-<button 
-    class="btn btn-primary" 
-    (click)="buyCourse(courseData)">
-  Buy Course
-</button>
 ```
 <!-- {% endraw %} -->
 

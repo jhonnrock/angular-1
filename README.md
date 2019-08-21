@@ -6,7 +6,7 @@ _Using Bootstrap classes in HTML files_
 
 # Displaying Data
 
-## The code in component.ts file
+The code in component.ts file
 ``` javascript
 export class Component {
   title = 'Angular Cheat Sheet';
@@ -15,7 +15,7 @@ export class Component {
 }
 ```
 
-## The code in the HTML file
+The code in the HTML file
 <!-- {% raw %} -->
 ``` html
 ### Showing component properties with interpolation
@@ -34,13 +34,13 @@ export class Component {
 <!-- {% endraw %} -->
 
 
-## Screenshot
+Screenshot
 ![Displaying Data in Angular](https://raw.githubusercontent.com/eneajaho/angular/master/img/1.png)
 
 
 # Template statements
 
-## The code in component.ts file
+The code in component.ts file
 ``` javascript
 export class Component {
 
@@ -54,7 +54,7 @@ export class Component {
 }
 ```
 
-## The code in the HTML file
+The code in the HTML file
 <!-- {% raw %} -->
 ``` html
 <div class="card">
@@ -73,50 +73,74 @@ export class Component {
 ```
 <!-- {% endraw %} -->
 
-## Screenshot
+Screenshot
 ![Template statements](https://raw.githubusercontent.com/eneajaho/angular/master/img/2.png)
 
 
 # Component Interaction 
-**Passing data from parent to child component
+**Passing data from parent to child component and backwards**
 
-## Parent Component
-### The code in parentComponent.ts file
-``` javascript
-export class ParentComponent {
-  courses = [
-    { id: 1, name: 'Master Angular', rating: '8' },
-    { id: 2, name: 'Master Laravel', rating: '7' },
-    { id: 3, name: 'Master ReactJS', rating: '6' },
-  ];
+**Creating a class for later use**
+```javascript
+export class Course {
+    name: string;
+    rating: number;
+    
+    constructor(name: string, rating: string) {
+        this.name = name;
+        this.rating = rating;
+    }
 }
 ```
 
-### The code in the parent HTML file
+### Parent Component
+The code in parentComponent.ts file
+``` javascript
+export class ParentComponent {
+  
+  addedCourses = Course[];
+
+  courses = [
+      new Course("Master Angular", 8),
+      new Course("Master Laravel", 7),
+      new Course("Master ReactJS", 6)
+  ];
+
+  onBuyCourse(course: Course) {
+    this.addedCourses.push(course);
+  }
+  
+}
+```
+
+The code in the parent HTML file
 <!-- {% raw %} -->
-``` html
-<course-child 
+```html
+<course
     *ngFor="let course of courses" 
-    [courseData]="course">
-</course-child>
+    [courseData]="course"
+    (boughtCourse)="onBuyCourse($event)"    
+>
+</course>
 ```
 <!-- {% endraw %} -->
 
 
-## Child Component
+###Child Component
 
-### The code in childComponent.ts file
+The code in childComponent.ts file
 ``` javascript
 export class ChildComponent {
-  @Input() courseData: {
-    id: number,
-    name: string,
-    rating: number
-  };
+  @Input() courseData: Course;
+  @Output() boughtCourse: new EventEmitter<Course>(); 
+  
+  buyCourse(course) {
+    this.boughtCourse.emit(course);
+  }
 }
 ```
 
-### The code in the child HTML file
+The code in the child HTML file
 <!-- {% raw %} -->
 ``` html
 <div> 
@@ -125,6 +149,11 @@ export class ChildComponent {
 <div> 
   Course Rating: {{ courseData.rating }} ★ 
 </div>
+<button 
+    class="btn btn-primary" 
+    (click)="buyCourse(courseData)">
+  Buy Course
+</button>
 ```
 <!-- {% endraw %} -->
 
@@ -132,9 +161,9 @@ export class ChildComponent {
 
 
 
-## Template-driven Forms
+# Template-driven Forms
 
-### The code in component.ts file
+The code in component.ts file
 ``` javascript
 export class Component {
   categories = [
@@ -148,7 +177,7 @@ export class Component {
   }
 }
 ```
-### The code in HTML file 
+The code in HTML file 
 <!-- {% raw %} -->
 ``` html
 ### using #f="ngForm"  and (ngSubmit)="submit(f.value)" to submit form data

@@ -57,7 +57,9 @@ _Using Bootstrap classes_
 <form #f="ngForm" (ngSubmit)="submit(f.value)">
     <div class="form-group">
         <label for="name"> Course Name </label>
-        <input required ngModel name="name" #name="ngModel" id="name" type="text" class="form-control">
+        <input 
+           required ngModel name="name" #name="ngModel" 
+           id="name" type="text" class="form-control">
         <div class="alert alert-danger" *ngIf="name.touched && name.invalid">
           <div *ngIf="name.errors.required">Course Name is required.</div>
         </div>
@@ -65,7 +67,9 @@ _Using Bootstrap classes_
   
     <div class="form-group">
         <label for="category">Category</label>
-        <select required ngModel name="category" #category="ngModel" id="category" class="form-control">
+        <select 
+            required ngModel name="category" #category="ngModel" 
+            id="category" class="form-control">
             <option value=""></option>
             <option *ngFor="let category of categories" [value]="category.id"> 
                 {{ category.name }}

@@ -74,7 +74,7 @@ export class Component {
 <!-- {% endraw %} -->
 
 ## Screenshot
-![Template statements](https://github.com/eneajaho/angular/blob/master/img/2.png)
+![Template statements](https://raw.githubusercontent.com/eneajaho/angular/master/img/2.png)
 
 
 # Component Interaction 

@@ -1,6 +1,6 @@
-### Angular 8 Cheat Sheet created during work hours
+# Angular 8 Cheat Sheet created during work hours
 
-_This part will be updated later_ 
+_**This part will be updated later**_ 
 
 ## Displaying Data
 

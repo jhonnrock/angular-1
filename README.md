@@ -55,61 +55,54 @@ export class Component {
 _Using Bootstrap classes_
 ``` html
 <form #f="ngForm" (ngSubmit)="submit(f.value)">
-  
-  <div class="form-group">
-    <label for="name"> Course Name </label>
-    <input 
-       required 
-       ngModel 
-       name="name" 
-       #name="ngModel" 
-       id="name" 
-       type="text" 
-       class="form-control">
-    <div class="alert alert-danger" *ngIf="name.touched && name.invalid">
-      <div *ngIf="name.errors.required">Course Name is required.</div>
+    <div class="form-group">
+        <label for="name"> Course Name </label>
+        <input 
+           required 
+           ngModel 
+           name="name" 
+           #name="ngModel" 
+           id="name" 
+           type="text" 
+           class="form-control">
+        <div class="alert alert-danger" *ngIf="name.touched && name.invalid">
+          <div *ngIf="name.errors.required">Course Name is required.</div>
+        </div>
     </div>
-    
-  </div>
   
-  <div class="form-group">
-    <label for="category">Category</label>
-    <select 
-        required 
-        ngModel 
-        name="category" 
-        #category="ngModel" 
-        id="category" 
-        class="form-control">
-      
-      <option value=""></option>
-      <option 
-          *ngFor="let category of categories" 
-          [value]="category.id"> 
-        {{ category.name }}
-      </option>
-      
-    </select>
-    
-    <div 
-       *ngIf="category.touched && category.invalid" 
-       class="alert alert-danger">
-      Category Field is required
+    <div class="form-group">
+        <label for="category">Category</label>
+        <select 
+            required 
+            ngModel 
+            name="category" 
+            #category="ngModel" 
+            id="category" 
+            class="form-control">
+            
+            <option value=""></option>
+            <option *ngFor="let category of categories" [value]="category.id"> 
+                {{ category.name }}
+            </option>
+            
+        </select>
+        
+        <div 
+           *ngIf="category.touched && category.invalid" 
+           class="alert alert-danger">
+            Category Field is required
+        </div>
     </div>
-    
-  </div>
 
-  <div class="checkbox mb-4">
-    <label for="moneyBackGuarantee"> </label>
-    <input ngModel name="hasMoneyBackGuarantee" type="checkbox" id="moneyBackGuarantee">
-    30-day money-back guarantee?
-  </div>
+    <div class="checkbox mb-4">
+        <label for="moneyBackGuarantee"> </label>
+        <input ngModel name="hasMoneyBackGuarantee" type="checkbox" id="moneyBackGuarantee">
+        30-day money-back guarantee?
+    </div>
 
-  <p>
-    {{ f.value | json }}
-  </p>
+    <p> {{ f.value | json }}  </p>
 
-  <button [disabled]="f.invalid" class="btn btn-primary">Create</button>
+    <button [disabled]="f.invalid" class="btn btn-primary">Create</button>
 
 </form>
 

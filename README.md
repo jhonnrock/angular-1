@@ -4,7 +4,7 @@ This part will be updated later
 
 ## Displaying Data
 
-### The code in component.ts file
+- The code in component.ts file
 ``` javascript
 export class Component {
   title = 'Angular Cheat Sheet';
@@ -13,7 +13,7 @@ export class Component {
 }
 ```
 
-### The code in the HTML file
+- The code in the HTML file
 <!-- {% raw %} -->
 ``` html
 

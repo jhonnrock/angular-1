@@ -1,10 +1,10 @@
-## Angular 8 Cheat Sheet created during work hours
+# Angular 8 Cheat Sheet created during work hours
 
 This part will be updated later 
 
 ## Displaying Data
 
-- The code in component.ts file
+### The code in component.ts file
 ``` javascript
 export class Component {
   title = 'Angular Cheat Sheet';
@@ -13,25 +13,29 @@ export class Component {
 }
 ```
 
-- The code in the HTML file
+###The code in the HTML file
 <!-- {% raw %} -->
 ``` html
 
-## Showing component properties with interpolation
+### Showing component properties with interpolation
 <div> {{ title }} </div>
 
-## Showing an array property with *ngFor
+### Showing an array property with *ngFor
 <ul>
   <li *ngFor="let language of languages">
     {{ language }}
   </li>
 </ul>
 
-## Conditional display with NgIf
+### Conditional display with NgIf
 <p *ngIf="age > 18">You are allowed to enter the club!</p>
 
 ```
 <!-- {% endraw %} -->
+
+
+
+
 
 
 ```markdown

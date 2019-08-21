@@ -4,7 +4,7 @@ This part will be updated later
 
 ## Displaying Data
 
-### The code in component file
+### The code in component.ts file
 ``` javascript
 export class Component {
   title = 'Angular Cheat Sheet';
@@ -18,12 +18,12 @@ export class Component {
 ``` html
 
 ## Showing component properties with interpolation
-<div> {{ title }} </div>
+<div> `{{ title }}` </div>
 
 ## Showing an array property with *ngFor
 <ul>
   <li *ngFor="let language of languages">
-    {{ language }}
+    `{{ language }}`
   </li>
 </ul>
 

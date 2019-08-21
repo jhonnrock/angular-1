@@ -34,7 +34,7 @@ The code in the HTML file
 <!-- {% endraw %} -->
 
 
-Screenshot
+### Screenshot
 ![Displaying Data in Angular](https://raw.githubusercontent.com/eneajaho/angular/master/img/1.png)
 
 
@@ -73,7 +73,7 @@ The code in the HTML file
 ```
 <!-- {% endraw %} -->
 
-Screenshot
+### Screenshot
 ![Template statements](https://raw.githubusercontent.com/eneajaho/angular/master/img/2.png)
 
 
@@ -126,7 +126,7 @@ The code in the parent HTML file
 <!-- {% endraw %} -->
 
 
-###Child Component
+### Child Component
 
 The code in childComponent.ts file
 ``` javascript

@@ -1,6 +1,8 @@
 # Angular 8 Cheat Sheet created during work hours
 
 _**This part will be updated later**_ 
+_Using Bootstrap classes in HTML files_
+
 
 ## Displaying Data
 
@@ -34,6 +36,38 @@ export class Component {
 <!-- {% endraw %} -->
 
 
+## Template statements
+
+### The code in component.ts file
+``` javascript
+export class Component {
+
+  likes = 10;
+  liked: boolean;
+
+  like() {
+    this.likes += (this.liked) ? -1 : 1;
+    this.liked = !this.liked;
+  }
+}
+
+```
+
+### The code in the HTML file
+<!-- {% raw %} -->
+``` html
+<div class="card">
+    ...
+    ### On Click event run the function like()
+    <button class="btn btn-primary" (click)="like()">
+      <i class="fas fa-heart" [ngClass]="this.liked === true ? 'bg-danger' : 'bg-secondary'"></i>
+    </button>
+    <span> {{ likes }} </span>
+</div>
+```
+<!-- {% endraw %} -->
+
+
 
 ## Template-driven Forms
 
@@ -52,7 +86,6 @@ export class Component {
 }
 ```
 ### The code in HTML file 
-_Using Bootstrap classes_
 <!-- {% raw %} -->
 ``` html
 ### using #f="ngForm"  and (ngSubmit)="submit(f.value)" to submit form data

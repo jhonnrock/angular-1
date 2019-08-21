@@ -5,7 +5,7 @@ This part will be updated later
 ## Displaying Data
 
 ### The code in component file
-```javascript
+``` javascript
 export class Component {
   title = 'Angular Cheat Sheet';
   languages = ['Javascript', 'PHP', 'Python', 'C++'];
@@ -14,9 +14,11 @@ export class Component {
 ```
 
 ### The code in the HTML file
-```html
+
+``` html
+
 ## Showing component properties with interpolation
-<div>{{ title }}</div>
+<div> {{ title }} </div>
 
 ## Showing an array property with *ngFor
 <ul>
@@ -27,6 +29,7 @@ export class Component {
 
 ## Conditional display with NgIf
 <p *ngIf="age > 18">You are allowed to enter the club!</p>
+
 ```
 
 

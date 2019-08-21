@@ -127,4 +127,4 @@ Syntax highlighted code block
 ```
 
 
-** Thanks for reading! **
+**Thanks for reading!**

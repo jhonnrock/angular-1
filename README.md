@@ -13,7 +13,7 @@ export class Component {
 }
 ```
 
-###The code in the HTML file
+### The code in the HTML file
 <!-- {% raw %} -->
 ``` html
 

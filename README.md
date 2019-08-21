@@ -166,8 +166,8 @@ The code in the child HTML file
 ```
 <!-- {% endraw %} -->
 
-
-
+### Screenshot
+![Component Intercation](https://raw.githubusercontent.com/eneajaho/angular/master/img/3.png)
 
 
 # Template-driven Forms

@@ -1,14 +1,33 @@
-## Welcome to GitHub Pages
+## Angular 8 Cheat Sheet created during work hours
 
-You can use the [editor on GitHub](https://github.com/eneajaho/angular-chsh/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+This part will be updated later 
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+## Displaying Data
+The code in component file
+```javascript
+  export class Component {
+  
+    title = 'Angular Cheat Sheet';
+    
+    languages = ['Javascript', 'PHP', 'Python', 'C++'];
+    
+  }
+```
+The code in the html file
+```html
+  <div>{{ title }}</div>
 
-### Markdown
+  <ul>
+    <li *ngFor="let language of languages">
+      {{ language }}
+    </li>
+  </ul>
+```
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+
 
 ```markdown
+
 Syntax highlighted code block
 
 # Header 1

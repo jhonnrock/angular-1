@@ -53,15 +53,19 @@ export class Component {
 ```
 ### The code in HTML file 
 _Using Bootstrap classes_
+<!-- {% raw %} -->
 ``` html
+### using **#f="ngForm"**  and **(ngSubmit)="submit(f.value)"** to submit form data
 <form #f="ngForm" (ngSubmit)="submit(f.value)">
     <div class="form-group">
-        <label for="name"> Course Name </label>
+        <label for="course"> Course Name </label>
+        ### Using **ngModel** **name="course"** **#course="ngModel"** to get data and input changes
         <input 
-           required ngModel name="name" #name="ngModel" 
-           id="name" type="text" class="form-control">
-        <div class="alert alert-danger" *ngIf="name.touched && name.invalid">
-          <div *ngIf="name.errors.required">Course Name is required.</div>
+           required ngModel name="course" #course="ngModel" 
+           id="course" type="text" class="form-control">
+        ### Showing errors using classes that Angular adds in HTML elements
+        <div class="alert alert-danger" *ngIf="course.touched && course.invalid">
+          <div *ngIf="course.errors.required">Course Name is required.</div>
         </div>
     </div>
   
@@ -94,7 +98,7 @@ _Using Bootstrap classes_
 </form>
 
 ```
-
+<!-- {% endraw %} -->
 
 
 ```markdown

@@ -58,15 +58,23 @@ export class Component {
 <!-- {% raw %} -->
 ``` html
 <div class="card">
-    ...
-    ### On Click event execute the like() function
-    <button class="btn btn-primary" (click)="like()">
-      <i class="fas fa-heart" [ngClass]="this.liked === true ? 'bg-danger' : 'bg-secondary'"></i>
-    </button>
-    <span> {{ likes }} </span>
+    <div class="card-body">
+        Lorem ipsum dolor sit amet, consec tetur adipi scing elit.
+        Pellen tesque vesti bulum id libero sollici tudin iaculis.
+    </div>
+    <div class="card-footer">
+        ### On Click event execute the like() function
+        <span class="h3" (click)="like()">
+          <i class="fas fa-heart" [ngClass]="this.liked === true ? 'text-danger' : 'text-secondary'"></i>
+        </span>
+        <span class="h3">  {{ likes }} </span> Likes
+    </div>
 </div>
 ```
 <!-- {% endraw %} -->
+
+## Screenshot
+![Template statements](https://github.com/eneajaho/angular/blob/master/img/2.png)
 
 
 # Component Interaction 

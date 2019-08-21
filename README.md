@@ -18,12 +18,12 @@ export class Component {
 ``` html
 
 ## Showing component properties with interpolation
-<div> \{\{ title \}\} </div>
+<div> {% raw %}{{ title }}{% endraw %} </div>
 
 ## Showing an array property with *ngFor
 <ul>
   <li *ngFor="let language of languages">
-    `{{ language }}`
+    {% raw %}{{ language }}{% endraw %}
   </li>
 </ul>
 

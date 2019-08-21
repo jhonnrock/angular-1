@@ -18,7 +18,6 @@ export class Component {
 ### The code in the HTML file
 <!-- {% raw %} -->
 ``` html
-
 ### Showing component properties with interpolation
 <div> {{ title }} </div>
 
@@ -31,7 +30,6 @@ export class Component {
 
 ### Conditional display with NgIf
 <p *ngIf="age > 18">You are allowed to enter the club!</p>
-
 ```
 <!-- {% endraw %} -->
 
@@ -50,7 +48,6 @@ export class Component {
     this.liked = !this.liked;
   }
 }
-
 ```
 
 ### The code in the HTML file
@@ -58,7 +55,7 @@ export class Component {
 ``` html
 <div class="card">
     ...
-    ### On Click event run the function like()
+    ### On Click event execute the like() function
     <button class="btn btn-primary" (click)="like()">
       <i class="fas fa-heart" [ngClass]="this.liked === true ? 'bg-danger' : 'bg-secondary'"></i>
     </button>

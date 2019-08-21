@@ -11,7 +11,7 @@ _Using Bootstrap classes in HTML files_
 export class Component {
   title = 'Angular Cheat Sheet';
   languages = ['Javascript', 'PHP', 'Python', 'C++'];
-  age = 18;
+  age = 19;
 }
 ```
 
@@ -19,7 +19,7 @@ export class Component {
 <!-- {% raw %} -->
 ``` html
 ### Showing component properties with interpolation
-<div> {{ title }} </div>
+<h1> {{ title }} </h1>
 
 ### Showing an array property with *ngFor
 <ul>
@@ -32,6 +32,10 @@ export class Component {
 <p *ngIf="age > 18">You are allowed to enter the club!</p>
 ```
 <!-- {% endraw %} -->
+
+
+## Screenshot
+![Displaying Data in Angular](https://raw.githubusercontent.com/eneajaho/angular/master/img/1.png)
 
 
 # Template statements

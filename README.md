@@ -4,9 +4,9 @@ _**This part will be updated later**_
 _Using Bootstrap classes in HTML files_
 
 
-## Displaying Data
+# Displaying Data
 
-### The code in component.ts file
+## The code in component.ts file
 ``` javascript
 export class Component {
   title = 'Angular Cheat Sheet';
@@ -15,7 +15,7 @@ export class Component {
 }
 ```
 
-### The code in the HTML file
+## The code in the HTML file
 <!-- {% raw %} -->
 ``` html
 ### Showing component properties with interpolation
@@ -34,9 +34,9 @@ export class Component {
 <!-- {% endraw %} -->
 
 
-## Template statements
+# Template statements
 
-### The code in component.ts file
+## The code in component.ts file
 ``` javascript
 export class Component {
 
@@ -50,7 +50,7 @@ export class Component {
 }
 ```
 
-### The code in the HTML file
+## The code in the HTML file
 <!-- {% raw %} -->
 ``` html
 <div class="card">
@@ -63,6 +63,60 @@ export class Component {
 </div>
 ```
 <!-- {% endraw %} -->
+
+
+# Component Interaction 
+**Passing data from parent to child component
+
+## Parent Component
+### The code in parentComponent.ts file
+``` javascript
+export class ParentComponent {
+  courses = [
+    { id: 1, name: 'Master Angular', rating: '8' },
+    { id: 2, name: 'Master Laravel', rating: '7' },
+    { id: 3, name: 'Master ReactJS', rating: '6' },
+  ];
+}
+```
+
+### The code in the parent HTML file
+<!-- {% raw %} -->
+``` html
+<course-child 
+    *ngFor="let course of courses" 
+    [courseData]="course">
+</course-child>
+```
+<!-- {% endraw %} -->
+
+
+## Child Component
+
+### The code in childComponent.ts file
+``` javascript
+export class ChildComponent {
+  @Input() courseData: {
+    id: number,
+    name: string,
+    rating: number
+  };
+}
+```
+
+### The code in the child HTML file
+<!-- {% raw %} -->
+``` html
+<div> 
+  Course Name: {{ courseData.name }} 
+</div>
+<div> 
+  Course Rating: {{ courseData.rating }} ★ 
+</div>
+```
+<!-- {% endraw %} -->
+
+
 
 
 

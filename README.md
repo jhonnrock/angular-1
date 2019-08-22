@@ -193,71 +193,85 @@ course-item.component.html
 
 # Template-driven Forms
 
-The code in component.ts file
+template-form.component.ts
 ``` javascript
-export class Component {
+export class TemplateFormComponent {
+
+  submitedData;
+
   categories = [
-    {id: 1, name: 'Teacher'},
-    {id: 2, name: 'Developer'},
-    {id: 3, name: 'Chef'}
+    { id: 1, name: 'Teacher' },
+    { id: 2, name: 'Developer' },
+    { id: 3, name: 'Chef' }
   ];
-  
+
   submit(formInput) {
-    console.log(formInput);
+    this.submitedData = formInput;
   }
+
 }
+
 ```
-The code in HTML file 
+template-form.component.html
 <!-- {% raw %} -->
 ``` html
-### using #f="ngForm"  and (ngSubmit)="submit(f.value)" to submit form data
-<form #f="ngForm" (ngSubmit)="submit(f.value)">
-    <div class="form-group">
-        <label for="course"> Course Name </label>
-      
-        ### Using ngModel name="course" #course="ngModel" to get data and input changes
-        <input 
-           required ngModel name="course" #course="ngModel" 
-           id="course" type="text" class="form-control">
-      
-        ### Showing errors using classes that Angular adds in HTML elements
-        <div class="alert alert-danger" *ngIf="course.touched && course.invalid">
-          <div *ngIf="course.errors.required">Course Name is required.</div>
-        </div>
-    </div>
-  
-    <div class="form-group">
-        <label for="category">Category</label>
-        <select 
-            required ngModel name="category" #category="ngModel" 
-            id="category" class="form-control">
-            <option value=""></option>
-          
-            ### Looping through categories and binding data to value attribute
-            <option *ngFor="let category of categories" [value]="category.id"> 
+<div class="row">
+  <div class="col-md-6 col-xs-12">
+    <div class="card">
+      <div class="card-body">
+        <form #f="ngForm" (ngSubmit)="submit(f.value)">
+          <div class="form-group">
+            <label for="course"> Course Name </label>
+            <input required ngModel name="course" #course="ngModel"
+              id="course"
+              type="text"
+              class="form-control"/>
+            <div
+              class="alert alert-danger mt-1"
+              *ngIf="course.touched && course.invalid">
+              <div *ngIf="course.errors.required">Course Name is required.</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="category">Category</label>
+            <select
+              required
+              ngModel
+              name="category"
+              #category="ngModel"
+              id="category"
+              class="form-control">
+              <option value=""></option>
+              <option *ngFor="let category of categories" [value]="category.id">
                 {{ category.name }}
-            </option>
-        </select>
-        
-        <div *ngIf="category.touched && category.invalid" class="alert alert-danger">
-            Category Field is required
-        </div>
+              </option>
+            </select>
+
+            <div
+              *ngIf="category.touched && category.invalid"
+              class="alert alert-danger">
+              Category Field is required
+            </div>
+          </div>
+
+          <div class="checkbox mb-4">
+            <label for="checkbox"> </label>
+            <input ngModel name="checkbox" type="checkbox" id="checkbox" />
+            Agree to license terms?
+          </div>
+          <button [disabled]="f.invalid" class="btn btn-primary">Create</button>
+        </form>
+      </div>
     </div>
-
-    <div class="checkbox mb-4">
-        <label for="checkbox"> </label>
-        <input ngModel name="checkbox" type="checkbox" id="checkbox">
-        Agree to license terms?
+  </div>
+  <div class="col-md-6 col-xs-12" *ngIf="submitedData">
+    <h4>Submited Data</h4>
+    <div class="card p-4">
+      <pre> {{ submitedData | json }}</pre>
     </div>
-    
-    ### Showing data to view in json format using json pipe
-    <p> {{ f.value | json }}  </p>
-
-    ### Adds disabled attribute to button if form is invalid
-    <button [disabled]="f.invalid" class="btn btn-primary">Create</button>
-
-</form>
-
+  </div>
+</div>
 ```
 <!-- {% endraw %} -->
 

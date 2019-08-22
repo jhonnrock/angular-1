@@ -1,11 +1,11 @@
 # Angular 8 Cheat Sheet created during work hours
+### [Live Demo](https://angular-chsh.netlify.com)
 
 _**This part will be updated later**_ 
 _Using Bootstrap classes in HTML files_
 
 
 # Displaying Data
-### [Live Demo](https://angular-chsh.netlify.com#display-data)
 display-data.component.ts
 ``` javascript
 export class DisplayDataComponent {

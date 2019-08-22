@@ -4,7 +4,7 @@ _**This part will be updated later**_
 _Using Bootstrap classes in HTML files_
 
 
-# Displaying Data
+# Displaying Data [Live Demo](https://angular-chsh.netlify.com#display-data)
 
 display-data.component.ts
 ``` javascript

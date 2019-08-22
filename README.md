@@ -112,7 +112,9 @@ export class CoursesComponent {
   ];
 
   onBuyCourse(course: Course) {
-    this.addedCourses.push(course);
+    if (!this.addedCourses.includes(course)) {
+      this.addedCourses.push(course);
+    }
   }
 
   remove(course: number) {

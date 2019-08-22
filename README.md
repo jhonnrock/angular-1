@@ -153,7 +153,7 @@ courses.component.html
 
 ### Child Component
 
-The code in childComponent.ts file
+course-item.component.ts
 ``` javascript
 import { Course } from '../course.model';
 export class CourseItemComponent {

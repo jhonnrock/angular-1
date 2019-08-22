@@ -99,7 +99,7 @@ The code in parentComponent.ts file
 import {Course} from '../course.model';
 
 export class ParentComponent {
-  addedCourses: Course[];
+  addedCourses = [];
 
   courses = [
     new Course('Master Angular', 8),

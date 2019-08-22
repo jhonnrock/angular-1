@@ -1,4 +1,4 @@
-# Angular 8 Cheat Sheet created during work hours
+# Angular 8 Cheat Sheet
 ### [Live Demo](https://angular-chsh.netlify.com)
 
 _**This part will be updated later**_ 
@@ -191,6 +191,123 @@ course-item.component.html
 
 ### Screenshot
 ![Component Intercation](https://raw.githubusercontent.com/eneajaho/angular/master/img/3.png)
+
+
+
+# Reactive Forms
+reactive-form.component.ts
+``` javascript
+export class ReactiveFormComponent {
+
+  form;
+  // Method #1
+  // form = new FormGroup({
+  //   name: new FormControl('', Validators.required),
+  //   contact: new FormGroup({
+  //     email: new FormControl(),
+  //     phone: new FormControl()
+  //   }),
+  //   password: new FormControl('', Validators.minLength(8))
+  // });
+
+  submitedData;
+
+  // Method #2
+  constructor(private fb: FormBuilder) {
+    this.form = this.fb.group({
+      name: ['', Validators.required],
+      contact: this.fb.group({
+        email: ['', Validators.email],
+        phone: []
+      }),
+      password: ['', Validators.minLength(8)]
+    });
+  }
+
+  get name() {
+    return this.form.get('name');
+  }
+  
+  login() {
+    this.submitedData = this.form.value;
+  }
+
+}
+```
+reactive-form.component.html
+<!-- {% raw %} -->
+``` html
+<div class="row">
+  <div class="col-md-6 col-xs-12">
+    <div class="card mb-4">
+      <div class="card-body">
+        <form [formGroup]="form" (ngSubmit)="login()">
+          <div class="form-group">
+            <label for="name">Username</label>
+            <input
+              formControlName="name"
+              id="name"
+              type="text"
+              class="form-control"
+              [ngClass]="{ 'border-danger': name.touched && name.invalid }"
+            />
+          </div>
+
+          <div
+            class="alert alert-danger mt-1"
+            *ngIf="name.touched && name.invalid"
+          >
+            <div *ngIf="name.errors.required">Course Name is required.</div>
+          </div>
+
+          <div class="form-group" formGroupName="contact">
+            <label for="email">Email</label>
+            <input
+              formControlName="email"
+              id="email"
+              type="email"
+              class="form-control"
+            />
+            <br />
+            <label for="phone">Phone</label>
+            <input
+              formControlName="phone"
+              id="phone"
+              type="text"
+              class="form-control"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="Password">Password</label>
+            <input
+              formControlName="password"
+              id="password"
+              type="password"
+              class="form-control"
+            />
+          </div>
+          <button
+            class="btn btn-primary"
+            [disabled]="form.invalid"
+            type="submit"
+          >
+            Sign Up
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6 col-xs-12" *ngIf="submitedData">
+    <h4>Submited Data</h4>
+    <div class="card p-4">
+      <pre> {{ submitedData | json }}</pre>
+    </div>
+  </div>
+</div>
+```
+<!-- {% endraw %} -->
+
 
 
 # Template-driven Forms

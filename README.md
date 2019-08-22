@@ -6,16 +6,16 @@ _Using Bootstrap classes in HTML files_
 
 # Displaying Data
 
-The code in component.ts file
+display-data.component.ts
 ``` javascript
-export class Component {
+export class DisplayDataComponent {
   title = 'Angular Cheat Sheet';
   languages = ['Javascript', 'PHP', 'Python', 'C++'];
   age = 19;
 }
 ```
 
-The code in the HTML file
+display-data.component.html
 <!-- {% raw %} -->
 ``` html
 ### Showing component properties with interpolation
@@ -40,35 +40,37 @@ The code in the HTML file
 
 # Template statements
 
-The code in component.ts file
+template-statements.component.ts
 ``` javascript
-export class Component {
+export class TemplateStatementsComponent {
 
   likes = 10;
   liked: boolean;
 
-  like() {
+  like(): void {
     this.likes += (this.liked) ? -1 : 1;
     this.liked = !this.liked;
   }
+
 }
 ```
 
-The code in the HTML file
+template-statements.component.html
 <!-- {% raw %} -->
 ``` html
-<div class="card">
-    <div class="card-body">
-        Lorem ipsum dolor sit amet, consec tetur adipi scing elit.
-        Pellen tesque vesti bulum id libero sollici tudin iaculis.
-    </div>
-    <div class="card-footer">
-        ### On Click event execute the like() function
-        <span class="h3" (click)="like()">
-          <i class="fas fa-heart" [ngClass]="this.liked === true ? 'text-danger' : 'text-secondary'"></i>
-        </span>
-        <span class="h3">  {{ likes }} </span> Likes
-    </div>
+<div class="card" style="max-width: 400px">
+  <div class="card-body p-4">
+    Lorem ipsum dolor sit amet, consec tetur adipi scing elit. Pellen tesque
+    vesti bulum id libero sollici tudin iaculis.
+  </div>
+  <div class="card-footer">
+    <span class="h3" (click)="like()">
+      <i class="fas fa-heart"
+        [ngClass]="this.liked ? 'text-danger' : 'text-secondary'">
+      </i>
+    </span>
+    <span class="h3"> {{ likes }} </span> Likes
+  </div>
 </div>
 ```
 <!-- {% endraw %} -->
@@ -83,10 +85,12 @@ The code in the HTML file
 **Creating a class for later use**
 ```javascript
 export class Course {
+    id: number;
     name: string;
     rating: number;
-    
-    constructor(name: string, rating: number) {
+
+    constructor(id: number, name: string, rating: number) {
+        this.id = id;
         this.name = name;
         this.rating = rating;
     }
@@ -94,36 +98,54 @@ export class Course {
 ```
 
 ### Parent Component
-The code in parentComponent.ts file
+courses.component.ts
 ``` javascript
 import {Course} from '../course.model';
 
-export class ParentComponent {
+export class CoursesComponent {
   addedCourses = [];
 
   courses = [
-    new Course('Master Angular', 8),
-    new Course('Master Laravel', 7),
-    new Course('Master ReactJS', 6)
+    new Course(1, 'Master Angular', 8),
+    new Course(2, 'Master Laravel', 7),
+    new Course(3, 'Master ReactJS', 6)
   ];
 
   onBuyCourse(course: Course) {
     this.addedCourses.push(course);
   }
-  
-}
+
+  remove(course: number) {
+    this.addedCourses = this.addedCourses.filter(
+      (item) => return item !== course;
+    );
+  }
 ```
 
-The code in the parent HTML file
+courses.component.html
 <!-- {% raw %} -->
 ```html
-<div class="row mt-5">
-  <course-item
+<div class="row mt-4">
+  <app-course-item
     *ngFor="let course of courses"
     [courseData]="course"
     (boughtCourse)="onBuyCourse($event)"
-    class="col-3">
-  </course-item>
+    class="col-xs-12 col-sm-6 col-md-3"
+  >
+  </app-course-item>
+  <div class="col-3" *ngIf="addedCourses.length > 0">
+    <h4>Bought Courses</h4>
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let addedCourse of addedCourses">
+        <div class="row justify-content-between align-items-center">
+          {{ addedCourse.name }}
+          <button class="btn btn-danger" (click)="remove(addedCourse)">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+      </li>
+    </ul>
+  </div>
 </div>
 ```
 <!-- {% endraw %} -->
@@ -133,33 +155,32 @@ The code in the parent HTML file
 
 The code in childComponent.ts file
 ``` javascript
-export class ChildComponent {
+import { Course } from '../course.model';
+export class CourseItemComponent {
+
   @Input() courseData: Course;
-  @Output() boughtCourse: new EventEmitter<Course>(); 
-  
-  buyCourse(course) {
+  @Output() boughtCourse = new EventEmitter<Course>();
+
+  buyCourse(course: Course) {
     this.boughtCourse.emit(course);
   }
+
 }
 ```
 
-The code in the child HTML file
+course-item.component.html
 <!-- {% raw %} -->
 ``` html
-<div class="card">
+<div class="card mb-2">
   <div class="card-body h3 text-center">
     {{ courseData.name }}
   </div>
   <div class="card-footer">
     <div class="row justify-content-between">
-      <button
-          class="btn btn-primary"
-          (click)="buyCourse(courseData)">
+      <button class="btn btn-primary" (click)="buyCourse(courseData)">
         Buy
       </button>
-      <span class="btn btn-warning">
-        {{ courseData.rating }} ★
-      </span>
+      <span class="ml-2 btn btn-warning"> {{ courseData.rating }} ★ </span>
     </div>
   </div>
 </div>

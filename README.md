@@ -305,6 +305,8 @@ reactive-form.component.html
 ```
 <!-- {% endraw %} -->
 
+### Screenshot
+![Reactive Form](https://raw.githubusercontent.com/eneajaho/angular/master/img/4.png)
 
 
 # Template-driven Forms
@@ -390,6 +392,8 @@ template-form.component.html
 </div>
 ```
 <!-- {% endraw %} -->
+### Screenshot
+![Reactive Form](https://raw.githubusercontent.com/eneajaho/angular/master/img/5.png)
 
 
 ```markdown

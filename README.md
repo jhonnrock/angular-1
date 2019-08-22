@@ -18,17 +18,14 @@ export class DisplayDataComponent {
 display-data.component.html
 <!-- {% raw %} -->
 ``` html
-### Showing component properties with interpolation
 <h1> {{ title }} </h1>
 
-### Showing an array property with *ngFor
 <ul>
   <li *ngFor="let language of languages">
     {{ language }}
   </li>
 </ul>
 
-### Conditional display with NgIf
 <p *ngIf="age > 18">You are allowed to enter the club!</p>
 ```
 <!-- {% endraw %} -->
